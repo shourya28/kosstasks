@@ -1,0 +1,49 @@
+<html>
+<head>
+ <title>Timer</title>
+ <style type="text/css">
+	body {
+	background-color: #d2b48c;
+	margin-left: 20%; 
+	margin-right: 20%;
+	border: 2px solid black;
+	padding: 275px 10px 10px 250px;
+	font-family: sans-serif;
+	}
+   </style>
+  
+</head>
+	
+<body>
+   
+<script type="text/javascript">
+
+ function TimerCountDown(last,elem){
+     
+  var element = document.getElementById(elem);
+  var time = Date.parse(last) - Date.parse(new Date());
+  var sec = Math.floor( (time/1000) % 60 );
+  var min = Math.floor( (time/(1000*60)) % 60 );
+  var hr = Math.floor( (time/(1000*60*60)) % 24 );
+  var d = Math.floor( time/(1000*60*60*24) );
+  element.innerHTML="Total Time left For KOSS Submission:"+"<br/>"+"</br>";
+  element.innerHTML+="   "+d + " , " + hr + " : " + min + " : " + sec + " (days , hr : min : sec) ";
+
+   var timer = setTimeout(function(){TimerCountDown(last,elem)},1000);
+
+  if(time<1)
+  { clearTimeout(time);
+	element.innerHTML="Time's Up. You should have submitted it by now";
+    }
+}
+
+</script>
+
+<div id="status"></div>
+<script type="text/javascript">
+var LastDate="2017-01-31";
+TimerCountDown(LastDate,"status");
+</script>
+
+ </body>
+</html>
